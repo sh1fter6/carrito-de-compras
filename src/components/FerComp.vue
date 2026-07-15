@@ -76,6 +76,9 @@ const puedeComprar = computed(() => {
 </script>
 
 <template>
+    <header>
+      <img src="../assets/img/logo-pokemart.png" alt="Logo PokéMart">
+    </header>
     <nav>
         <ol class="steps">
             <li :class="{ on: paso >= 1 }">Carrito</li>
@@ -96,9 +99,9 @@ const puedeComprar = computed(() => {
             <h2>Carrito</h2>
             <p>El carrito está vacío, entrenador. ¡Busca algún producto!</p>
             <div class="compras">
-                <p>Baya <button>Quitar</button></p>
-                <p>Baya <button>Quitar</button></p>
-                <p>Baya <button>Quitar</button></p>
+                <p>Baya <button>-</button></p>
+                <p>Baya <button>-</button></p>
+                <p>Baya <button>-</button></p>
             </div>
             <!--<h4>{{ item.nombre }} × {{ item.cantidad }} <strong @click="quitarDelCarrito(item.id)"></strong></h4>-->
             <div class="carrito">
@@ -124,5 +127,5 @@ const puedeComprar = computed(() => {
 </template>
 
 <style lang="scss" scoped>
-@use './FerComp.scss';
+@use './PokeMartComp.scss';
 </style>

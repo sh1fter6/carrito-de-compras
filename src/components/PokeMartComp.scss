@@ -26,6 +26,17 @@ $radius: 10px;
 }
 
 // ──────────────────────────────────────
+// HEADER
+// ──────────────────────────────────────
+header {
+  padding: 2%;
+}
+
+header img {
+  width: 40%;
+}
+
+// ──────────────────────────────────────
 // NAV / STEPS
 // ──────────────────────────────────────
 nav {
@@ -59,12 +70,14 @@ section.main {
   gap: 1rem;
   box-sizing: border-box;
   line-height: 1.2;
+  background-image: url(../assets/img/bg-pokemart.png);
+  background-repeat: repeat;
 }
 
 article {
   flex: 2 1 300px;
   padding: 2%;
-  background-color: $color-white;
+  //background-color: $color-white;
   min-width: 0;
 }
 
@@ -142,10 +155,16 @@ aside {
     padding: 0.3rem 0;
     margin: 0;
     border-bottom: 1px solid $color-grey;
+    background-color: $color-white;
   }
 
   button {
+    padding: 0.4rem 1rem;
+    white-space: nowrap;
     cursor: pointer;
+    border-radius: 10px;
+    border: none;
+    background-color: $color-black;
   }
 }
 
