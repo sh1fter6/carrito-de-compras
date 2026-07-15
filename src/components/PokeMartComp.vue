@@ -167,7 +167,7 @@ function reiniciarCompra() {
           </aside>
       </section>
     </Transition>
-    
+  <footer>Hecho por "PokeMetálicos Asociados" para el bootcamp Curso de Desarrollo de Aplicaciones Front-End SENCE 2026.</footer>    
 
 </template>
 

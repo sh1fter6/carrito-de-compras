@@ -427,3 +427,13 @@ h1, h2, h3 {
     text-align: left;
   }
 }
+
+// ──────────────────────────────────────
+// FOOTER
+// ──────────────────────────────────────
+footer {
+  background-color: $color-grey;
+  color: $color-white;
+  padding: 2%;
+  text-align: center;
+}
