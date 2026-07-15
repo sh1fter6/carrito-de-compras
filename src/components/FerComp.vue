@@ -19,6 +19,7 @@ const catalogo = [
   { id: 2, nombre: 'Poción', precio: 50 },
   { id: 3, nombre: 'Baya', precio: 30 },
   { id: 4, nombre: 'SuperBall', precio: 200 },
+  { id: 5, nombre: 'Master Ball', precio: 49900 },
 ]
 
 function agregarAlCarrito(producto) {
@@ -79,28 +80,17 @@ const puedeComprar = computed(() => {
     <header>
       <img src="../assets/img/logo-pokemart.png" alt="Logo PokéMart">
     </header>
+
     <nav>
-        <ol class="steps">
-            <li :class="{ on: paso >= 1 }">Carrito</li>
-            <li :class="{ on: paso >= 2 }">Datos</li>
-            <li :class="{ on: paso >= 3 }">Confirmar</li>
-        </ol>
+      <h1>Carrito de Compra</h1>
+      <ol class="steps">
+        <li>Carrito</li>
+        <li>Datos</li>
+        <li>Confirmar</li>
+      </ol>
     </nav>
     <section class="main">
         <article>
-            <h1>Carrito de Compra: PokéMart</h1>
-            <div class="datos-usuario">
-              <h2>Tus datos</h2>
-              <div class="form">
-                <label>Nombre</label>
-                <input type="text">
-
-                <label>E-mail</label>
-                <input type="text">
-              </div>
-              
-            </div>
-            
             <div class="catalogo-mart">
               <h2>Catálogo</h2>
               <div class="producto" v-for="prod in catalogo" :key="prod.id">
@@ -109,22 +99,33 @@ const puedeComprar = computed(() => {
               </div>
             </div>
 
-
-            <h2>Tu Carrito</h2>
-            <p v-if="tienda.carrito.length === 0">El carrito está vacío, entrenador. ¡Busca algún producto!</p>
-            <div v-else class="cart">
-              <div class="compras">
-                <p v-for="i in tienda.carrito" :key="i.id">{{ i.nombre }} × {{ i.cantidad }} <span>${{ (i.precio * i.cantidad).toLocaleString('es-CL') }}</span> <button @click="quitarDelCarrito(tienda.carrito.id)">-</button></p>
+            <div class="tus-compras">
+              <h2>Tu Carrito</h2>
+              <p v-if="tienda.carrito.length === 0">El carrito está vacío, entrenador. ¡Busca algún producto!</p>
+              <div v-else class="cart">
+                <div class="compras">
+                  <p v-for="i in tienda.carrito" :key="i.id">{{ i.nombre }} × {{ i.cantidad }} <span>{{ (i.precio * i.cantidad).toLocaleString('es-CL') }}</span> <button @click="quitarDelCarrito(tienda.carrito.id)">-</button></p>
+                </div>
               </div>
             </div>
-            
         </article>
 
         <aside>
+          <div class="datos-usuario">
+            <h2>Ingresa tus datos</h2>
+            <div class="form">
+              <label>Nombre *</label>
+              <input v-model.trim="cliente.nombre" type="text" placeholder="Tu nombre">
+              <label>E-mail</label>
+              <input v-model.trim="cliente.email" type="email" placeholder="tucorreo@mail.com" />
+              <small v-if="cliente.email && !emailValido" class="err">Email inválido</small>
+            </div>
+          </div>
+
           <div class="carrito">
             <h2>Resumen de Carrito</h2>
             <p>Subtotal <strong>${{ subtotal.toLocaleString('es-CL') }}</strong></p>
-            <p>Descuento <strong>$</strong></p>
+            <p>Descuento <strong>{{ descuento === 0 ? '0' :  '-$' + descuento.toLocaleString('es-CL') }}</strong></p>
             <h3>TOTAL <strong>${{ total.toLocaleString('es-CL') }}</strong></h3>
             <button>Siguiente</button>
           </div>
