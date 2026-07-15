@@ -1,5 +1,10 @@
-# Vue 3 + Vite
+¡Bienvenido a PokeMart!
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+¡Elección de entrenador! Puedes acceder a varios productos útiles para tu viaje para convertirte en maestro Pokémon en nuestra tienda. Siempre habrá algo que te ayude en tu camino para enfrentarte a entrenadores, líderes de gimnasio, organizaciones malvadas o, simplemente, dedicarte a atraparlos a todos.
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+
+
+separador
+
+
+"Este sitio fue hecho por el grupo PokeMetálicos Asociados, integrado por Fernanda Kauak y Martín Miranda, en el Curso de Desarrollo Front-End de SENCE 2026."
