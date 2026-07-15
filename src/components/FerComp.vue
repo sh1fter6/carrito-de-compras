@@ -95,6 +95,11 @@ const puedeComprar = computed(() => {
 
             <h2>Carrito</h2>
             <p>El carrito está vacío, entrenador. ¡Busca algún producto!</p>
+            <div class="compras">
+                <p>Baya <button>Quitar</button></p>
+                <p>Baya <button>Quitar</button></p>
+                <p>Baya <button>Quitar</button></p>
+            </div>
             <!--<h4>{{ item.nombre }} × {{ item.cantidad }} <strong @click="quitarDelCarrito(item.id)"></strong></h4>-->
             <div class="carrito">
                 <p>Subtotal <strong>$5000</strong></p>
