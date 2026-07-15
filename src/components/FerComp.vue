@@ -90,7 +90,7 @@ const puedeComprar = computed(() => {
             <h2>Catálogo</h2>
             <div class="producto" v-for="prod in catalogo" :key="prod.id">
                 <p>{{ prod.nombre }} <strong>{{ prod.precio }}</strong></p>
-                <button @click="agregarAlCarrito(prod)">+ Agregar</button>
+                <button @click="agregarAlCarrito(prod)">+</button>
             </div>
 
             <h2>Carrito</h2>
@@ -123,63 +123,6 @@ const puedeComprar = computed(() => {
 
 </template>
 
-<style scoped>
-    nav {
-        width: 100%;
-        padding: 4%;
-        background-color: red;
-        color: white;
-    }
-
-    section.main {
-        width: 100%;
-        padding: 2%;
-        border-radius: 10px;
-        border: 2px solid red;
-        display: flex;
-    }
-
-    article {
-        width: 60%;
-        padding: 2%;
-        background-color: white;
-    }
-
-    .producto {
-        width: 98%;
-        padding: 1%;
-        border: 1px solid black;
-        display: flex;
-    }
-
-    .producto p {
-        width: 70%;
-        text-align: left;
-    }
-
-    .producto p strong {
-        padding-left: 5%;
-        padding-right: 2%;
-        float: right;
-    }
-
-    .producto button {
-        width: 15%;
-        padding: 2%;
-    }
-
-    .carrito {
-        width: 98%;
-        padding: 1%;
-        border-radius: 10px;
-        background-color: black;
-        color: white;
-    }
-
-    aside {
-        width: 30%;
-        background-color: white;
-        border: 2px solid black;
-        padding: 2%;
-    }
+<style lang="scss" scoped>
+@use './FerComp.scss';
 </style>
