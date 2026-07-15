@@ -93,7 +93,15 @@ const puedeComprar = computed(() => {
         <li>Confirmar</li>
       </ol>
     </nav>
-    <section class="main">
+    <article class="fincompra">
+      <h2>¡Gracias por tu compra, {{ cliente.nombre }}!</h2>
+      <b>{{ totalItems }}</b> producto(s) por
+      <b>${{ total.toLocaleString('es-CL') }}</b> fue registrado.
+      <b>¿Quieres pedir otra cosa para tu viaje Pokémon?</b>
+      <button>Haz un nuevo pedido</button>
+    </article>
+
+    <section class="main">    
         <article>
             <div class="catalogo-mart">
               <h2>Catálogo</h2>
