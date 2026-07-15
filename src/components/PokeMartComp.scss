@@ -106,8 +106,12 @@ aside {
 }
 
 // ──────────────────────────────────────
-// PRODUCTOS
+// CATÁLOGO DE PRODUCTOS
 // ──────────────────────────────────────
+.catalogo {
+  padding: 2%;
+}
+
 .producto {
   width: 100%;
   padding: 10px;
@@ -192,4 +196,17 @@ aside {
     padding: 0.4rem 1rem;
     cursor: pointer;
   }
+}
+
+// ──────────────────────────────────────
+// DATOS
+// ──────────────────────────────────────
+.datos-usuario {
+  background-color: $color-grey;
+  border-radius: $radius;
+  padding: 2%;
+}
+
+.datos-usuario h2 {
+  padding: 0;
 }

@@ -16,7 +16,7 @@ const cliente = reactive({
 
 const catalogo = [
   { id: 1, nombre: 'Pokeball', precio: 150 },
-  { id: 2, nombre: 'Pocion', precio: 50 },
+  { id: 2, nombre: 'Poción', precio: 50 },
   { id: 3, nombre: 'Baya', precio: 30 },
   { id: 4, nombre: 'SuperBall', precio: 200 },
 ]
@@ -89,37 +89,45 @@ const puedeComprar = computed(() => {
     <section class="main">
         <article>
             <h1>Carrito de Compra: PokéMart</h1>
+            <div class="datos-usuario">
+              <h2>Tus datos</h2>
+              <div class="form">
+                <label>Nombre</label>
+                <input type="text">
 
-            <h2>Catálogo</h2>
-            <div class="producto" v-for="prod in catalogo" :key="prod.id">
-                <p>{{ prod.nombre }} <strong>{{ prod.precio }}</strong></p>
-                <button @click="agregarAlCarrito(prod)">+</button>
+                <label>E-mail</label>
+                <input type="text">
+              </div>
+              
+            </div>
+            
+            <div class="catalogo-mart">
+              <h2>Catálogo</h2>
+              <div class="producto" v-for="prod in catalogo" :key="prod.id">
+                  <p>{{ prod.nombre }} <strong>{{ prod.precio }}</strong></p>
+                  <button @click="agregarAlCarrito(prod)">+</button>
+              </div>
             </div>
 
-            <h2>Carrito</h2>
-            <p>El carrito está vacío, entrenador. ¡Busca algún producto!</p>
-            <div class="compras">
-                <p>Baya <button>-</button></p>
-                <p>Baya <button>-</button></p>
-                <p>Baya <button>-</button></p>
+
+            <h2>Tu Carrito</h2>
+            <p v-if="tienda.carrito.length === 0">El carrito está vacío, entrenador. ¡Busca algún producto!</p>
+            <div v-else class="cart">
+              <div class="compras">
+                <p v-for="i in tienda.carrito" :key="i.id">{{ i.nombre }} × {{ i.cantidad }} <span>${{ (i.precio * i.cantidad).toLocaleString('es-CL') }}</span> <button @click="quitarDelCarrito(tienda.carrito.id)">-</button></p>
+              </div>
             </div>
-            <!--<h4>{{ item.nombre }} × {{ item.cantidad }} <strong @click="quitarDelCarrito(item.id)"></strong></h4>-->
-            <div class="carrito">
-                <p>Subtotal <strong>$5000</strong></p>
-                <p>Descuento <strong>$5000</strong></p>
-                <h3>TOTAL <strong>$5000</strong></h3>
-                <button>+ Agregar</button>
-            </div>
+            
         </article>
 
         <aside>
-            <h2>Tus datos</h2>
-
-            <label>Nombre</label>
-            <input type="text">
-
-            <label>E-mail</label>
-            <input type="text">
+          <div class="carrito">
+            <h2>Resumen de Carrito</h2>
+            <p>Subtotal <strong>${{ subtotal.toLocaleString('es-CL') }}</strong></p>
+            <p>Descuento <strong>$</strong></p>
+            <h3>TOTAL <strong>${{ total.toLocaleString('es-CL') }}</strong></h3>
+            <button>Siguiente</button>
+          </div>
         </aside>
     </section>
     
