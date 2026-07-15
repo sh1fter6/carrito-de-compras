@@ -34,7 +34,11 @@ function agregarAlCarrito(producto) {
 function quitarDelCarrito(id) {
   const index = tienda.carrito.findIndex(item => item.id === id)
   if (index !== -1) {
-    tienda.carrito.splice(index, 1)
+    if (tienda.carrito[index].cantidad > 1) {
+      tienda.carrito[index].cantidad--
+    } else {
+      tienda.carrito.splice(index, 1)
+    }
   }
 }
 
@@ -94,19 +98,27 @@ const puedeComprar = computed(() => {
             <div class="catalogo-mart">
               <h2>Catálogo</h2>
               <div class="producto" v-for="prod in catalogo" :key="prod.id">
-                  <p>{{ prod.nombre }} <strong>{{ prod.precio }}</strong></p>
+                  <p>{{ prod.nombre }} <strong>${{ prod.precio.toLocaleString('es-CL') }}</strong></p>
                   <button @click="agregarAlCarrito(prod)">+</button>
               </div>
             </div>
 
             <div class="tus-compras">
               <h2>Tu Carrito</h2>
-              <p v-if="tienda.carrito.length === 0">El carrito está vacío, entrenador. ¡Busca algún producto!</p>
-              <div v-else class="cart">
-                <div class="compras">
-                  <p v-for="i in tienda.carrito" :key="i.id">{{ i.nombre }} × {{ i.cantidad }} <span>{{ (i.precio * i.cantidad).toLocaleString('es-CL') }}</span> <button @click="quitarDelCarrito(tienda.carrito.id)">-</button></p>
+              <Transition name="fade" mode="out-in">
+                <p v-if="tienda.carrito.length === 0" key="empty">El carrito está vacío, entrenador. ¡Busca algún producto!</p>
+                <div v-else class="cart" key="cart">
+                  <TransitionGroup name="cart-list" tag="div" class="compras">
+                    <p v-for="i in tienda.carrito" :key="i.id">
+                      <span>{{ i.nombre }} × {{ i.cantidad }}</span>
+                      <span class="precio-acciones">
+                        <span>${{ (i.precio * i.cantidad).toLocaleString('es-CL') }}</span> 
+                        <button @click="quitarDelCarrito(i.id)">-</button>
+                      </span>
+                    </p>
+                  </TransitionGroup>
                 </div>
-              </div>
+              </Transition>
             </div>
         </article>
 
@@ -127,7 +139,7 @@ const puedeComprar = computed(() => {
             <p>Subtotal <strong>${{ subtotal.toLocaleString('es-CL') }}</strong></p>
             <p>Descuento <strong>{{ descuento === 0 ? '0' :  '-$' + descuento.toLocaleString('es-CL') }}</strong></p>
             <h3>TOTAL <strong>${{ total.toLocaleString('es-CL') }}</strong></h3>
-            <button>Siguiente</button>
+            <button :disabled="!puedeComprar">Siguiente</button>
           </div>
         </aside>
     </section>
