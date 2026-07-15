@@ -1,7 +1,7 @@
 <script setup>
-import FerComp from './components/FerComp.vue';
+import PokeMartComp from './components/PokeMartComp.vue';
 </script>
 
 <template>
-  <FerComp />
+  <PokeMartComp />
 </template>
